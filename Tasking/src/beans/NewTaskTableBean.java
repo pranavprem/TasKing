@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package beans;
 
 import javax.swing.JTextArea;
