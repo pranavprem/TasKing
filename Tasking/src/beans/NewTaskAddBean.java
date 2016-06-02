@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package beans;
 
 import java.io.File;
