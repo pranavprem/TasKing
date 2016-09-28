@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 import util.Constants;
@@ -109,7 +110,24 @@ public class NewTaskAddBean {
 	
 	
 	
-
+public ArrayList<JComponent> getHeaders(){
+	ArrayList<JComponent> Components = new ArrayList<JComponent>();
+	JLabel temp = new JLabel();
+	temp.setText("Name");
+	Components.add(temp);
+	JLabel temp1 = new JLabel();
+	temp.setText("Description");
+	Components.add(temp1);
+	JLabel temp2 = new JLabel();
+	temp.setText("EstimatedETC");
+	Components.add(temp2);
+	JLabel temp3 = new JLabel();
+	temp.setText("EstimatedDate");
+	Components.add(temp3);
+	
+	return Components;
+	
+}
 	
 	
 	public ArrayList<JComponent> getComponenets(){

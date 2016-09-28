@@ -31,10 +31,10 @@ public class UserDAO {
 		}
 	}
 	
-	public static ArrayList<NewTaskBean> getAllUsers(){
+	public static ArrayList<UserBean> getAllUsers(){
 		
 		ObjectMapper mapper = new ObjectMapper();
-		ArrayList<NewTaskBean> users = new ArrayList<NewTaskBean>();
+		ArrayList<UserBean> users = new ArrayList<UserBean>();
 		
 		try{
 			users= mapper.readValue(new File(util.Utilities.getLocation()+"User.json"), new TypeReference<ArrayList<NewTaskBean>>() {
