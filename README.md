@@ -14,3 +14,7 @@ Users can add tasks for themselves with an estimated time of completion. They ca
 If user is a manager, he/she can add tasks for reportees with estimated time of completion. Reportees can resolve these with an actual time of completion
 If user is a manager, he/she can add tasks with an estimated time to a "pool" that will be visible to all reportees of that user. Reportees can pull/release tasks or mark a pulled task for complettion with actual completion time.
 Manager can export all data for all completed tasks of reportees and analyze for efficiency within teams.
+
+
+#Caveats
+All user ids have to be 8 digit.
