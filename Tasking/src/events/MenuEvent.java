@@ -31,6 +31,8 @@ public class MenuEvent implements ActionListener{
 		else if (source.getText().equals("Refresh")){
 			tasking.getAppFrame().getContentPane().removeAll();
 			tasking.arrangeComponents(tasking.getUser().getText(), tasking.getManager().getText());
+			tasking.getAppFrame().getContentPane().validate();
+			tasking.getAppFrame().getContentPane().repaint();
 		}
 		else if (source.getText().equals("Backup")){
 			new BackupService().backup();

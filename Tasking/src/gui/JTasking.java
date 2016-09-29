@@ -170,7 +170,7 @@ public class JTasking {
 		Border blackline = BorderFactory.createLineBorder(Color.BLACK);
 		++i;
 		j = 0;
-		for (JComponent component : new NewTaskAddBean().getHeaders()) {
+		for (JComponent component : new NewTaskTableBean().getHeaders()) {
 			constraints.gridx = j;
 			constraints.gridy = i;
 			component.setBorder(blackline);
@@ -182,7 +182,7 @@ public class JTasking {
 	
 	@SuppressWarnings("unused")
 	public int getWidth(){
-		int j=0;;
+		int j=0;
 		for (JComponent component : new NewTaskTableBean().getHeaders()) {
 			++j;
 		}
@@ -248,7 +248,7 @@ public class JTasking {
 				constraints.gridx = j;
 				constraints.gridy = i;
 				temp = new JButton("DELETE");
-				temp.setToolTipText("Delete Manager " + this.User.getText() + " " + row.getID().getText());
+				temp.setToolTipText("Delete Manager " + user + " " + row.getID().getText());
 				temp.addActionListener(new TaskEvent(this));
 				temp.setBorder(blackline);
 				panel.add(temp, constraints);
@@ -292,7 +292,7 @@ public class JTasking {
 				constraints.gridx = j;
 				constraints.gridy = i;
 				temp = new JButton("EDIT");
-				temp.setToolTipText("Edit Manager " + this.User.getText() + " " + row.getID().getText());
+				temp.setToolTipText("Edit Manager " + user + " " + row.getID().getText());
 				temp.addActionListener(new TaskEvent(this));
 				temp.setBorder(blackline);
 				panel.add(temp, constraints);
@@ -448,7 +448,7 @@ public class JTasking {
 		constraints.gridx = 0;
 		constraints.gridy = i;
 
-		JLabel associate = new JLabel(LoginService.getName(user));
+		JLabel associate = new JLabel(LoginService.getName(user),SwingConstants.CENTER);
 		associate.setBorder(blackline);
 		if (TaskService.isEight(user)) {
 			associate.setBackground(Color.CYAN);

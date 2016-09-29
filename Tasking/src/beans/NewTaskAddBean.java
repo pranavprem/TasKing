@@ -8,9 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
-
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 import util.Constants;
@@ -40,7 +38,6 @@ public class NewTaskAddBean {
 		initializeComponent(Description);
 		initializeComponent(EstimatedETC);
 		initializeComponent(EstimatedDate);
-		initializeComponent(AssignDate);
 		this.EstimatedDate.setText(df.format(new Date()));
 		
 	}
@@ -85,7 +82,7 @@ public class NewTaskAddBean {
 		Integer id=null;
 		Scanner sc= null;
 		try{
-			new Utilities();
+			
 			sc= new Scanner(new File(Utilities.getLocation()+Constants.tasknum+Constants.dotTxt));
 			id=sc.nextInt();
 			id++;
@@ -107,27 +104,6 @@ public class NewTaskAddBean {
 		return "NewTaskAddBean [ID=" + ID + ", Name=" + Name + ", Description=" + Description + ", EstimatedETC="
 				+ EstimatedETC + ", EstimatedDate=" + EstimatedDate + ", AssignDate=" + AssignDate + "]";
 	}
-	
-	
-	
-public ArrayList<JComponent> getHeaders(){
-	ArrayList<JComponent> Components = new ArrayList<JComponent>();
-	JLabel temp = new JLabel();
-	temp.setText("Name");
-	Components.add(temp);
-	JLabel temp1 = new JLabel();
-	temp.setText("Description");
-	Components.add(temp1);
-	JLabel temp2 = new JLabel();
-	temp.setText("EstimatedETC");
-	Components.add(temp2);
-	JLabel temp3 = new JLabel();
-	temp.setText("EstimatedDate");
-	Components.add(temp3);
-	
-	return Components;
-	
-}
 	
 	
 	public ArrayList<JComponent> getComponenets(){

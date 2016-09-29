@@ -27,10 +27,10 @@ public class NewTaskTableBean {
 	private JTextArea EstimatedDate = new JTextArea();
 	
 	
-	
-	public NewTaskTableBean() {
+	public NewTaskTableBean(){
 		super();
 	}
+	
 	public NewTaskTableBean(JTextArea iD, JTextArea name, JTextArea description, JTextArea estimatedETC,
 			JTextArea actualETC, JTextArea assignDate, JTextArea estimatedDate) {
 		super();

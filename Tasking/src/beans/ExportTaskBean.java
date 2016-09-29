@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import services.LoginService;
 import util.Utilities;
 
 import util.Constants;
@@ -22,19 +23,22 @@ public class ExportTaskBean {
 	private Date AssignDate;
 	private Date CompletionDate;
 	private Date EstimatedDate;
-	private String Owner;
+	private String owner;
+	private String ownerName;
 	private Float timeDifference;
 
-	public ExportTaskBean(NewTaskBean task, String User) {
+	public ExportTaskBean(NewTaskBean task, String user) {
 		this.ID = task.getID();
 		this.Name = task.getName();
 		this.AssignDate = task.getAssignDate();
 		this.CompletionDate = task.getCompletedDate();
 		this.ActualETC = task.getActualETC();
+		this.EstimatedETC = task.getEstimatedETC();
 		this.timeDifference = this.EstimatedETC - this.ActualETC;
 		this.Description = task.getDescription();
-		this.Owner = User;
+		this.owner = user;
 		this.EstimatedDate = task.getEstimatedDate();
+		this.ownerName = LoginService.getName(this.owner);
 	}
 
 	public Integer getID() {
@@ -102,11 +106,11 @@ public class ExportTaskBean {
 	}
 
 	public String getOwner() {
-		return Owner;
+		return owner;
 	}
 
 	public void setOwner(String owner) {
-		Owner = owner;
+		this.owner = owner;
 	}
 
 	public Float getTimeDifference() {
@@ -117,6 +121,14 @@ public class ExportTaskBean {
 		this.timeDifference = timeDifference;
 	}
 
+	public String getOwnerName() {
+		return ownerName;
+	}
+
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
+	}
+
 	public static String getHeaders() {
 		return "COMPLETED_BY,OWNER,ID,NAME,DESCRIPTION,ASSIGNED_DATE,ESTIMATED_DATE,COMPLETED_DATE,ESTIMATED_ETC,ACTUAL_ETC,TIME_SAVED";
 	}
@@ -124,10 +136,11 @@ public class ExportTaskBean {
 	@Override
 	public String toString() {
 		DateFormat df = new SimpleDateFormat(Constants.dateFormat);
-		return Owner + Constants.comma + ID + Constants.comma + Utilities.cleanString(Name) + Constants.comma
-				+ Utilities.cleanString(Description) + Constants.comma + df.format(AssignDate) + Constants.comma
-				+ df.format(EstimatedDate) + Constants.comma + df.format(CompletionDate) + Constants.comma
-				+ EstimatedETC + Constants.comma + timeDifference;
+		return owner + Constants.comma + Utilities.cleanString(ownerName) + Constants.comma + ID + Constants.comma
+				+ Utilities.cleanString(Name) + Constants.comma + Utilities.cleanString(Description) + Constants.comma
+				+ df.format(AssignDate) + Constants.comma + df.format(EstimatedDate) + Constants.comma
+				+ df.format(CompletionDate) + Constants.comma + EstimatedETC + Constants.comma + ActualETC
+				+ Constants.comma + timeDifference;
 
 	}
 

@@ -1,5 +1,6 @@
 package events;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -37,6 +38,10 @@ public class LoginEvent implements ActionListener{
 				Login.switchVisibility();
 				new JTasking(id.getText(),loginService.getManager(user));
 			}
+		}
+		else{
+			Login.getJtfUsername().setBackground(Color.RED);
+			Login.getJtfPassword().setBackground(Color.RED);
 		}
 		
 	}

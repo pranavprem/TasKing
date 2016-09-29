@@ -53,8 +53,8 @@ public class BackupService {
 	
 	public void backup(){
 		File srcFile = new File(util.Utilities.getLocation());
-		DateFormat df = new SimpleDateFormat(util.Constants.dateFormat);
-		File destFile = new File("C:\\TasKing Backup "+df.format(new Date()));
+		DateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+		File destFile = new File("D:\\TasKing Backup"+df.format(new Date()));
 		try{
 			copyFolder(srcFile, destFile);
 			

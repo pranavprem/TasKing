@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 import beans.NewTaskAddBean;
 import beans.NewTaskTableBean;
@@ -24,7 +25,9 @@ public class TaskEvent implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		JButton buttonPressed = (JButton) e.getSource();
+		System.out.println(buttonPressed.getToolTipText());
 		String taskAddUser;
 		if(buttonPressed.getToolTipText().contains("Add Task")){
 			taskAddUser = buttonPressed.getToolTipText().substring(8);
@@ -41,7 +44,7 @@ public class TaskEvent implements ActionListener{
 		}
 		else if(buttonPressed.getToolTipText().contains("Delete")){
 			String user = null, task = null;
-			if(buttonPressed.getToolTipText().contains("manager")){
+			if(buttonPressed.getToolTipText().contains("Manager")){
 				user = tasking.getUser().getText()+"-"+buttonPressed.getToolTipText().substring(15, 23);
 				task = buttonPressed.getToolTipText().substring(24);
 			}
@@ -49,6 +52,8 @@ public class TaskEvent implements ActionListener{
 				user = tasking.getUser().getText();
 				task = buttonPressed.getToolTipText().substring(16);
 			}
+			System.out.println(task);
+			System.out.println(user);
 			taskService.deleteTask(task, user);
 		}
 		else if(buttonPressed.getToolTipText().contains("Complete")){
@@ -58,16 +63,24 @@ public class TaskEvent implements ActionListener{
 			Float ActualETC;
 			for(NewTaskTableBean row:tasking.getTaskTable()){
 				if(row.getID().getText().equals(task)){
+					try{
 					ActualETC=Float.parseFloat(row.getActualETC().getText());
 					taskService.completeTask(task, user, ActualETC);
 					taskService.deleteTask(task, user);
+					}catch(NumberFormatException numberFormatException){
+						row.setActualETC(new JTextArea("Please fill value"));
+					}
 				}
 			}
 			for(NewTaskTableBean row:tasking.getManagerTaskTable()){
 				if(row.getID().getText().equals(task)){
+					try{
 					ActualETC=Float.parseFloat(row.getActualETC().getText());
 					taskService.completeTask(task, tasking.getManager().getText()+"-"+user, ActualETC);
 					taskService.deleteTask(task, tasking.getManager().getText()+"-"+user);
+					}catch(NumberFormatException numberFormatException){
+						row.setActualETC(new JTextArea("Please fill value"));
+					}
 				}
 			}
 		}
@@ -100,7 +113,7 @@ public class TaskEvent implements ActionListener{
 			manager = tasking.getManager().getText();
 			task = buttonPressed.getToolTipText();
 			task = task.substring(17);
-			taskService.pull(task, user, manager);
+			taskService.release(task, user, manager);
 		}
 		else if(buttonPressed.getToolTipText().contains("Edit")){
 			String user = null, task = null, description = "";

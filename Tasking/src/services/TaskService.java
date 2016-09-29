@@ -98,7 +98,7 @@ public class TaskService {
 	
 	
 	public ArrayList<NewTaskTableBean> getpool (String user){
-		tasks=TaskDAO.getAllTasks(user);
+		tasks=TaskDAO.getAllTasks(user+"-pool");
 		ArrayList<NewTaskTableBean> taskTable= new ArrayList<NewTaskTableBean>();
 		for(NewTaskBean task:tasks){
 			taskTable.add(new NewTaskTableBean(task));
@@ -122,13 +122,25 @@ public class TaskService {
 	
 	public void deletePool(String ID, String user){
 		ArrayList<NewTaskBean> tasks = TaskDAO.getAllTasks(user+"-pool");
-		for(NewTaskBean task: tasks){
+		Iterator<NewTaskBean> it = tasks.iterator();
+		NewTaskBean task;
+		while(it.hasNext()){
+			task=it.next();
 			if(task.getID().equals(Integer.parseInt(ID))){
-				tasks.remove(task);
+				System.out.println("HERE");
+				it.remove();
 				break;
 			}
-		TaskDAO.putAllTasks(tasks, user+"-pool");
+			
 		}
+		/*for(NewTaskBean task: tasks){
+			if(task.getID().equals(Integer.parseInt(ID))){
+				System.out.println("HERE");
+				tasks.remove(task);
+				break;
+			}*/
+		TaskDAO.putAllTasks(tasks, user+"-pool");
+		
 	}
 	
 	public void pull(String ID, String user, String manager){
@@ -192,7 +204,7 @@ public class TaskService {
 			}
 		}
 		TaskDAO.putAllTasks(managerTasks, manager+"-"+user);
-		TaskDAO.putAllTasks(poolTasks, manager+"-"+user);		
+		TaskDAO.putAllTasks(poolTasks, manager+"-pool");		
 	}
 	
 	public void edit(String ID, String user, String description){

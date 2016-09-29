@@ -33,7 +33,7 @@ public class UserDAO {
 	public static ArrayList<UserBean> getAllUsers(){
 		
 		ObjectMapper mapper = new ObjectMapper();
-		ArrayList<UserBean> users = new ArrayList<UserBean>();
+		ArrayList<UserBean> users = null;
 		
 		try{
 			users= mapper.readValue(new File(util.Utilities.getLocation()+"User.json"), new TypeReference<ArrayList<UserBean>>() {

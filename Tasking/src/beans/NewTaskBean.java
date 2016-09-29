@@ -25,7 +25,7 @@ public class NewTaskBean {
 	private Float EstimatedETC;
 	private Float ActualETC;
 	private Date AssignDate;
-	private java.util.Date EstimatedDate;
+	private Date EstimatedDate;
 	private Date CompletedDate;
 
 	public NewTaskBean() {

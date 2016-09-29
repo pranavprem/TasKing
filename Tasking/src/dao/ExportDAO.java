@@ -17,7 +17,7 @@ public class ExportDAO {
 			PrintWriter pw = new PrintWriter (new File(util.Utilities.getLocation()+"Completed Tasks List "+df.format(new Date())+".csv"));
 			pw.println(ExportTaskBean.getHeaders());
 			for(ExportTaskBean task: completedTasks){
-				pw.println(task);
+				pw.println(task.toString());
 			}
 			pw.close();
 } catch (FileNotFoundException e) {
