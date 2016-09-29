@@ -36,6 +36,8 @@ public class TaskDAO {
 			tasks = mapper.readValue(new File(util.Utilities.getLocation() + user + "-completed.json"),
 					new TypeReference<ArrayList<NewTaskBean>>() {
 					});
+			tasks.add(task);
+			mapper.writeValue(new File(util.Utilities.getLocation() + user + "-completed.json"),tasks);
 		} catch (JsonParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

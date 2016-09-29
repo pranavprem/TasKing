@@ -10,7 +10,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import beans.NewTaskBean;
 import beans.UserBean;
 
 public class UserDAO {
@@ -37,7 +36,7 @@ public class UserDAO {
 		ArrayList<UserBean> users = new ArrayList<UserBean>();
 		
 		try{
-			users= mapper.readValue(new File(util.Utilities.getLocation()+"User.json"), new TypeReference<ArrayList<NewTaskBean>>() {
+			users= mapper.readValue(new File(util.Utilities.getLocation()+"User.json"), new TypeReference<ArrayList<UserBean>>() {
 			});
 		} catch (JsonParseException e) {
 			// TODO Auto-generated catch block

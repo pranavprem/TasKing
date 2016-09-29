@@ -36,10 +36,12 @@ public static void main(String[] args) {
 			}
 			
 		}
-		else
-			new JLogin();
-		
 		sc.close();
+		
 	}
+	else
+		new JLogin();
+	
+	
 }
 }
