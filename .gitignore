@@ -1,0 +1,21 @@
+target/
+bin/
+.idea/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+.vscode/
+dependency-reduced-pom.xml
+
+# Local data. User.json in here stores passwords in plain text.
+/data/
+/location.txt
+tasknum.txt
+/TasKing Backup */
+
+*.log
+.DS_Store
+Thumbs.db
